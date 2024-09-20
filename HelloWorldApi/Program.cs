@@ -1,10 +1,11 @@
-﻿using System;
-using System.Runtime.InteropServices;
-using System.Timers;
-using Microsoft.Owin.Hosting;
-
+﻿
 namespace HelloWorldApi
 {
+    using System;
+    using System.Runtime.InteropServices;
+    using System.Timers;
+    using Microsoft.Owin.Hosting;
+
     class Program
     {
         const int STD_INPUT_HANDLE = -10;

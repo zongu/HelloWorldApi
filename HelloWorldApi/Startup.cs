@@ -1,12 +1,14 @@
-﻿using System.Web.Http;
-using Microsoft.Owin;
-using Microsoft.Owin.Cors;
-using Owin;
-
-[assembly: OwinStartup(typeof(HelloWorldApi.Startup))]
+﻿
+[assembly: Microsoft.Owin.OwinStartup(typeof(HelloWorldApi.Startup))]
 
 namespace HelloWorldApi
 {
+    using System.Web.Http;
+    using Autofac.Integration.WebApi;
+    using Microsoft.Owin.Cors;
+    using HelloWorldApi.Applibs;
+    using Owin;
+
     public class Startup
     {
         public void Configuration(IAppBuilder app)
@@ -26,6 +28,9 @@ namespace HelloWorldApi
                 "DefaultApi",
                 "api/{controller}/{id}",
                 new { id = RouteParameter.Optional });
+
+            // API DI設定
+            config.DependencyResolver = new AutofacWebApiDependencyResolver(AutofacConfig.Container);
 
             return config;
         }
