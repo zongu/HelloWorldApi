@@ -24,7 +24,7 @@ namespace HelloWorldApi.Test.Controllers
 
             var content = await getResult.Content.ReadAsStringAsync();
 
-            Assert.IsTrue(string.IsNullOrEmpty(content));
+            Assert.IsFalse(string.IsNullOrEmpty(content));
         }
     }
 }
